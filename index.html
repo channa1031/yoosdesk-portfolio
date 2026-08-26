@@ -149,15 +149,25 @@
   }
 
   /* ---------- IDEAS ---------- */
-  .idea-group{ margin-bottom:28px; }
+  .idea-group{ margin-bottom:34px; }
   .idea-group:last-child{ margin-bottom:0; }
   .idea-group-label{
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    margin-bottom:10px;
+    font-family:var(--font-body);
+    font-size:15.5px;
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:-0.005em;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:13px;
+  }
+  .idea-group-label::before{
+    content:"";
+    flex:0 0 auto;
+    width:3px; height:16px;
+    border-radius:2px;
+    background:var(--amber);
   }
   .idea-group-intro{
     font-size:14px;
@@ -178,14 +188,24 @@
   .idea-tag.variety{ border-color:#BFE3CE; }
 
   .ideas-subhead{
-    font-family:var(--font-mono);
-    font-size:13px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
+    font-family:var(--font-display);
+    font-size:21px;
+    font-weight:400;
+    letter-spacing:-0.01em;
     color:var(--ink);
-    padding-bottom:8px;
-    border-bottom:1px solid var(--line);
-    margin:40px 0 24px;
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding-bottom:11px;
+    border-bottom:2px solid var(--ink);
+    margin:54px 0 26px;
+  }
+  .ideas-subhead::before{
+    content:"";
+    flex:0 0 auto;
+    width:11px; height:11px;
+    border-radius:2px;
+    background:var(--amber);
   }
   .ideas-subhead:first-of-type{ margin-top:0; }
 
@@ -1017,7 +1037,7 @@
     <div class="eyebrow">Ideas</div>
     <h2>유스데스크를 함께 만들어간다면?</h2>
     <p class="measure" style="margin-bottom:10px;">채널을 편집자 시점에서 바라보며 정리한 편집·운영·기획 아이디어입니다.<br><span style="font-size:13px; color:var(--muted);">(모든 아이디어는 AI 도움 없이 고안하였습니다.)</span></p>
-    <p class="measure" style="font-size:13px; color:var(--muted); line-height:1.75; margin:0 0 28px;">아래 제안드리는 내용들은 어디까지나 저의 주관적인 의견이며, 실제 방향은 영우님의 결정을 최우선으로 따르겠습니다. 지금 이대로의 유스데스크도 좋아하기에, 현재와 같은 편집이 필요하시다면 그 역할도 충분히 해낼 수 있습니다.</p>
+    <p class="measure" style="font-size:14px; color:var(--ink-soft); line-height:1.8; margin:0 0 30px;">아래 제안드리는 내용들은 어디까지나 저의 주관적인 의견이며, 실제 방향은 영우님의 결정을 최우선으로 따르겠습니다. 지금 이대로의 유스데스크도 좋아하기에, 현재와 같은 편집이 필요하시다면 그 역할도 충분히 해낼 수 있습니다.</p>
 
     <h3 class="ideas-subhead">편집 &amp; 운영 방향</h3>
 
