@@ -853,6 +853,37 @@
     font-size:12px;
     color:var(--muted);
   }
+  /* ---------- PRINT / PDF ---------- */
+  @media print{
+    /* 화면 전용 요소 숨김 */
+    .toc, .greeting-btn, audio, .pf-link{ display:none !important; }
+    .idea-expand > summary{ display:none !important; }
+
+    /* 스크롤 등장 애니메이션 무력화 — 인쇄 시 빈 영역 방지 */
+    .pf-card, .idea-group, .match-list li, .timeline li,
+    .hero .name, .greeting-btn{
+      opacity:1 !important;
+      transform:none !important;
+      animation:none !important;
+      transition:none !important;
+    }
+
+    /* 접힌 상세 내용 강제 노출 */
+    details > summary ~ *{ display:block !important; }
+
+    body{ background:#fff; font-size:11pt; }
+    section{ padding:20px 0; border-bottom:1px solid var(--line); }
+    a{ text-decoration:none; }
+
+    /* 항목이 페이지 경계에서 잘리지 않도록 */
+    .pf-card, .idea-group, .match-list li, .timeline li, .ba-item{
+      break-inside:avoid; page-break-inside:avoid;
+    }
+    .ideas-subhead, h2{ break-after:avoid; page-break-after:avoid; }
+
+    /* 배경색·이미지 유지 */
+    *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  }
 </style>
 </head>
 <body>
@@ -1393,6 +1424,24 @@
     revealTargets.forEach(function(el){ el.classList.add('in-view'); });
     fillBars.forEach(function(f){ f.style.width = f.dataset.target; });
   }
+
+  // ---------- 인쇄/PDF 저장 시 접힌 내용 펼치기 ----------
+  var printOpened = [];
+  window.addEventListener('beforeprint', function(){
+    printOpened = [];
+    document.querySelectorAll('details').forEach(function(d){
+      if(!d.open){ printOpened.push(d); d.open = true; }
+    });
+    document.querySelectorAll('.pf-card, .idea-group, .match-list li, .timeline li')
+      .forEach(function(el){ el.classList.add('in-view'); });
+    document.querySelectorAll('.contrib-fill').forEach(function(f){
+      if(f.dataset.target){ f.style.width = f.dataset.target; }
+    });
+  });
+  window.addEventListener('afterprint', function(){
+    printOpened.forEach(function(d){ d.open = false; });
+    printOpened = [];
+  });
 })();
 </script>
 
